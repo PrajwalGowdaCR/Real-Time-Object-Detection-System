@@ -1,0 +1,9 @@
+{
+    // Use the project's virtualenv interpreter so Pylance resolves imports
+    "python.defaultInterpreterPath": "C:\\Users\\Abhishek sharma\\OneDrive\\Desktop\\PROJECT\\.venv\\Scripts\\python.exe",
+
+    // Tell Pylance to also look for packages inside the venv site-packages
+    "python.analysis.extraPaths": [
+        "./.venv/Lib/site-packages"
+    ]
+}

@@ -1,0 +1,25 @@
+import streamlit as st
+import tempfile
+import os
+from traffic_analyzer_app import process_video   # make sure this file exists
+
+def main_app():
+    st.title("🚦 Real-Time Traffic Density Analyzer")
+    st.markdown("---")
+
+    video_file = st.file_uploader("Upload a traffic video file (.mp4)", type=['mp4'])
+
+    if video_file is not None:
+        # 1. Save the uploaded video temporarily
+        tfile = tempfile.NamedTemporaryFile(delete=False)
+        tfile.write(video_file.read())
+        
+        # 2. Get the temporary file path for OpenCV
+        video_path = tfile.name
+        
+        # 3. Call your core processing function
+        st.write("Processing video... (Analysis will display below)")
+        process_video(video_path) # NOTE: We must adapt this function next.
+
+        # 4. Cleanup the temporary file (optional but good practice)
+        os.remove(video_path)
